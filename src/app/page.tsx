@@ -9,9 +9,11 @@ import {
   ShoppingBag,
   FileCheck2,
   Wallet,
-  ExternalLink,
-  GitBranch,
   Bot,
+  Activity,
+  Zap,
+  Globe,
+  Github,
   Flame,
   ShieldCheck,
   Terminal,
@@ -26,6 +28,36 @@ import { AICopilotModal } from "@/components/AICopilotModal";
 import { TitanProject } from "@/types/portfolio";
 
 const TITAN_PROJECTS: TitanProject[] = [
+  {
+    id: "aegissec-os",
+    name: "AegisSec OS",
+    category: "Cyber Defense & SOC SIEM (Titan 10)",
+    tagline: "SIEM Incident Command, Canvas Threat Radar & MITRE ATT&CK",
+    description: "Pusat komando pertahanan siber terpadu dengan HTML5 Canvas 60 FPS rotating threat radar, status DEFCON dinamis, matriks 8 taktik MITRE ATT&CK enterprise, WAF rule engine, dan audit kerentanan CVE.",
+    techStack: ["Next.js 16", "Canvas 60 FPS", "MITRE Heatmap", "WAF Engine"],
+    liveUrl: "https://olyxmintabansos-byte.github.io/aegissec-os/",
+    githubUrl: "https://github.com/olyxmintabansos-byte/aegissec-os",
+    statsMetric: "Decagon Titan • Live",
+    badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
+    accentGradient: "from-cyan-500/20 via-blue-600/10 to-transparent",
+    iconName: "shield",
+    status: "OPERATIONAL",
+  },
+  {
+    id: "medicore-os",
+    name: "MediCore OS",
+    category: "Hospital ERP & Clinical Triage (Titan 9)",
+    tagline: "Pusat Triase IGD, Live Lead II EKG & Farmasi E-Resep",
+    description: "Sistem operasi rumah sakit modern dengan visualisasi gelombang elektrokardiogram (EKG 60Hz) HTML5 Canvas, alokasi 12 bed IGD/ICU, smart farmasi e-resep deteksi alergi, dan Casemix INA-CBG invoice A4.",
+    techStack: ["Next.js 16", "Canvas Lead II", "INA-CBG Billing", "E-Resep"],
+    liveUrl: "https://olyxmintabansos-byte.github.io/medicore-os/",
+    githubUrl: "https://github.com/olyxmintabansos-byte/medicore-os",
+    statsMetric: "4 Rute • 100% Live",
+    badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+    accentGradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
+    iconName: "heart",
+    status: "OPERATIONAL",
+  },
   {
     id: "neuroforge-ai",
     name: "NeuroForge AI",
@@ -51,8 +83,8 @@ const TITAN_PROJECTS: TitanProject[] = [
     liveUrl: "https://olyxmintabansos-byte.github.io/nexus-shiftops/",
     githubUrl: "https://github.com/olyxmintabansos-byte/nexus-shiftops",
     statsMetric: "6 Rute • 100% Live",
-    badgeColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
-    accentGradient: "from-cyan-500/20 via-blue-600/10 to-transparent",
+    badgeColor: "bg-sky-500/10 text-sky-400 border-sky-500/30",
+    accentGradient: "from-sky-500/20 via-blue-600/10 to-transparent",
     iconName: "layers",
     status: "OPERATIONAL",
   },
@@ -138,10 +170,14 @@ export default function PortfolioHubPage() {
 
   const getProjectIcon = (name: TitanProject["iconName"]) => {
     switch (name) {
+      case "shield":
+        return <ShieldCheck className="w-6 h-6 text-cyan-400" />;
+      case "heart":
+        return <HeartPulse className="w-6 h-6 text-emerald-400" />;
       case "cpu":
         return <Cpu className="w-6 h-6 text-purple-400" />;
       case "layers":
-        return <Layers className="w-6 h-6 text-cyan-400" />;
+        return <Layers className="w-6 h-6 text-sky-400" />;
       case "graduation":
         return <GraduationCap className="w-6 h-6 text-indigo-400" />;
       case "trending":
@@ -152,190 +188,200 @@ export default function PortfolioHubPage() {
         return <FileCheck2 className="w-6 h-6 text-pink-400" />;
       case "wallet":
         return <Wallet className="w-6 h-6 text-blue-400" />;
-      case "heart":
-        return <HeartPulse className="w-6 h-6 text-rose-400" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#050811] text-slate-100 selection:bg-cyan-500 selection:text-slate-950 font-sans pb-20">
-      {/* Top Status HUD */}
-      <div className="border-b border-slate-800/80 bg-[#080d1a]/80 backdrop-blur-md px-6 py-2.5 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between font-mono text-xs">
+    <div className="min-h-screen bg-[#060813] text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-black">
+      {/* Top Telemetry Bar */}
+      <header className="border-b border-slate-800 bg-[#070b19]/80 backdrop-blur-md sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-            <span className="text-slate-300 font-bold hidden sm:inline">
-              APEX COMMAND STATUS: <span className="text-emerald-400">ALL TITANS OPERATIONAL</span>
-            </span>
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/20">
+              <Zap className="w-6 h-6 text-slate-950 fill-current" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-black text-white text-base tracking-wider">APEX TITANS HUB</span>
+                <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold">
+                  THE DECAGON MILESTONE
+                </span>
+              </div>
+              <p className="text-[10px] text-slate-400">10 Autonomous Enterprise Systems Ecosystem</p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <Link
-              href="/observatory"
-              className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#0f172a] border border-slate-700 hover:border-cyan-500 text-slate-300 hover:text-white transition-all"
+              href="/observatory/"
+              className="px-3 py-1.5 rounded-xl border border-cyan-500/40 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm shadow-cyan-500/10"
             >
-              <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              <span>Global Observatory</span>
+              <Radio className="w-3.5 h-3.5 animate-pulse text-cyan-400" />
+              <span>Observatory</span>
             </Link>
 
             <button
               onClick={() => setIsCopilotOpen(true)}
-              className="px-3 py-1 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20 cursor-pointer transition-all active:scale-95"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-xs flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/25 active:scale-95"
             >
-              <Bot className="w-3.5 h-3.5" />
-              <span>Apex Neural Copilot</span>
+              <Bot className="w-4 h-4 fill-current" />
+              <span>9Router Copilot</span>
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Hero Section */}
-      <section className="relative px-6 pt-16 pb-12 max-w-7xl mx-auto text-center space-y-6 overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider mb-2">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Chief Systems Architect Showcase • 8 Production Titans Live</span>
-        </div>
-
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight max-w-4xl mx-auto leading-tight">
-          Enterprise Systems <br />
-          <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-amber-400 bg-clip-text text-transparent">
-            Engineered at 100M+ Scale.
-          </span>
-        </h1>
-
-        <p className="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-          Koleksi sistem operasi web enterprise berarsitektur <em>client-side local-first</em>, tanpa celah build error, dan dideploy secara otonom di GitHub Pages oleh duet <strong>Antigravity</strong> & <strong>Hermes Agent</strong>.
-        </p>
-
-        {/* Global Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 font-mono">
-          <div className="bg-[#0b101f] border border-slate-800 p-4 rounded-2xl">
-            <div className="text-2xl font-black text-cyan-400">8 Titans</div>
-            <div className="text-[11px] text-slate-500 mt-0.5">100% Zero-Defect Live</div>
+      <section className="relative overflow-hidden py-16 sm:py-20 border-b border-slate-800/80 bg-gradient-to-b from-[#0a0e24] to-[#060813]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.15),rgba(255,255,255,0))] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300 font-medium mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Chief Systems Architect Blueprint • Autonomous Hermes Execution</span>
           </div>
-          <div className="bg-[#0b101f] border border-slate-800 p-4 rounded-2xl">
-            <div className="text-2xl font-black text-emerald-400">35+ Rute</div>
-            <div className="text-[11px] text-slate-500 mt-0.5">Next.js App Router</div>
-          </div>
-          <div className="bg-[#0b101f] border border-slate-800 p-4 rounded-2xl">
-            <div className="text-2xl font-black text-amber-400">285K+</div>
-            <div className="text-[11px] text-slate-500 mt-0.5">Tokens Burned Sessions</div>
-          </div>
-          <div className="bg-[#0b101f] border border-slate-800 p-4 rounded-2xl">
-            <div className="text-2xl font-black text-purple-400">0 Errors</div>
-            <div className="text-[11px] text-slate-500 mt-0.5">Bypass Jekyll (.nojekyll)</div>
+
+          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none mb-6">
+            The 10 Enterprise Titans <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
+              Decagon Milestone (100M+ Tokens)
+            </span>
+          </h1>
+
+          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-8">
+            Sepuluh mahakarya perangkat lunak tingkat korporasi skala penuh yang diarsiteki dengan standar industri:
+            Cyber Defense SIEM, Hospital ERP, Multi-Agent Orchestrator, Workforce Management, CBT LMS, Pasar Modal, Smart Retail POS, ATS Resume, dan SME Financials.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
+            <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
+              <Activity className="w-4 h-4 text-emerald-400" />
+              <span className="text-slate-400">Total Status:</span>
+              <span className="text-white font-bold">10 / 10 Production Live</span>
+            </div>
+            <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
+              <Globe className="w-4 h-4 text-blue-400" />
+              <span className="text-slate-400">Rute Prerendered:</span>
+              <span className="text-white font-bold">42+ Halaman Statis</span>
+            </div>
+            <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-amber-400" />
+              <span className="text-slate-400">Arsitektur:</span>
+              <span className="text-white font-bold">Client-Side Local-First</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Main Bento Grid */}
-      <section className="px-6 max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+      {/* Bento Grid Titans */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-xl font-black text-white font-mono flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-cyan-400" />
-              <span>THE PRODUCTION-GRADE TITANS</span>
+            <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+              <span>Bento Grid Titans Ecosystem</span>
+              <span className="text-xs px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                10 TITANS
+              </span>
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">Jalankan demo sistem langsung di browser lu</p>
+            <p className="text-xs text-slate-400 mt-1">Eksplorasi portofolio live, arsitektur sistem, dan source code repositori.</p>
           </div>
-
-          <a
-            href="https://github.com/olyxmintabansos-byte"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono font-bold text-slate-300 hover:text-white transition-colors"
+          <Link
+            href="/observatory/"
+            className="text-xs text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1 group"
           >
-            <GitBranch className="w-4 h-4" />
-            <span>olyxmintabansos-byte</span>
-          </a>
+            <span>Buka Global Observatory</span>
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {TITAN_PROJECTS.map((proj) => (
+          {TITAN_PROJECTS.map((project) => (
             <div
-              key={proj.id}
-              className={`bg-[#090e1c] border border-slate-800 hover:border-slate-700 rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between space-y-6 relative overflow-hidden group shadow-xl`}
+              key={project.id}
+              className="group relative rounded-3xl border border-slate-800/80 bg-gradient-to-b from-[#0c1228] to-[#070b1a] p-6 hover:border-slate-700 transition-all flex flex-col justify-between hover:shadow-2xl hover:shadow-cyan-500/5 hover:-translate-y-1"
             >
-              <div
-                className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${proj.accentGradient} rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform`}
-              />
-
-              <div className="space-y-4 relative z-10">
-                <div className="flex items-start justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-[#12192d] border border-slate-700/80 flex items-center justify-center shadow-inner">
-                    {getProjectIcon(proj.iconName)}
+              <div>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-slate-700 transition-colors">
+                    {getProjectIcon(project.iconName)}
                   </div>
-
-                  <span className={`text-[10px] font-mono px-2.5 py-1 rounded-full font-bold border ${proj.badgeColor}`}>
-                    {proj.statsMetric}
+                  <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${project.badgeColor}`}>
+                    {project.statsMetric}
                   </span>
                 </div>
 
-                <div>
-                  <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider block font-bold">
-                    {proj.category}
-                  </span>
-                  <h3 className="text-xl font-black text-white mt-1 group-hover:text-cyan-400 transition-colors">
-                    {proj.name}
-                  </h3>
-                  <p className="text-xs text-amber-400 font-mono mt-1 font-semibold">
-                    {proj.tagline}
-                  </p>
+                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                  {project.category}
                 </div>
+                <h3 className="text-lg font-black text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2 mb-2">
+                  <span>{project.name}</span>
+                </h3>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {proj.description}
+                <p className="text-xs text-slate-300 font-medium mb-3 line-clamp-2">
+                  {project.tagline}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {proj.techStack.map((tech) => (
+                <p className="text-xs text-slate-400 leading-relaxed mb-6 line-clamp-3">
+                  {project.description}
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {project.techStack.map((tech, idx) => (
                     <span
-                      key={tech}
-                      className="px-2 py-0.5 rounded-md bg-[#131b31] border border-slate-800 text-[10px] font-mono text-slate-400"
+                      key={idx}
+                      className="px-2 py-0.5 rounded-md bg-slate-900/80 border border-slate-800 text-[10px] font-mono text-slate-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-800/80 relative z-10 font-mono text-xs">
-                <a
-                  href={proj.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="py-2.5 px-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black flex items-center justify-center gap-1.5 transition-all shadow-md shadow-cyan-500/10 cursor-pointer"
-                >
-                  <span>Buka Live Demo</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-
-                <a
-                  href={proj.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="py-2.5 px-3 rounded-xl bg-[#131b31] hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 font-bold flex items-center justify-center gap-1.5 transition-all"
-                >
-                  <GitBranch className="w-3.5 h-3.5" />
-                  <span>GitHub</span>
-                </a>
+                <div className="grid grid-cols-2 gap-2 pt-4 border-t border-slate-800/80">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <span>Live Demo</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <Github className="w-3.5 h-3.5" />
+                    <span>GitHub</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
         </div>
-      </section>
+      </main>
 
       {/* Footer */}
-      <footer className="mt-20 border-t border-slate-800/80 pt-8 text-center font-mono text-xs text-slate-500 space-y-2">
-        <p>Architected by Antigravity Chief Systems Architect • Executed by Hermes Agent Desktop v0.21.3</p>
-        <p>© 2026 olyxmintabansos-byte • Engineered with Next.js 16, TypeScript & 9Router Local Intelligence</p>
+      <footer className="border-t border-slate-800/80 bg-[#04060f] py-8 text-center text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            © 2026 <span className="text-slate-300 font-bold">Apex Cyber Systems</span> • Organization:{" "}
+            <code className="text-cyan-400 font-mono">olyxmintabansos-byte</code>
+          </div>
+          <div className="flex items-center gap-4 text-slate-400">
+            <span>Powered by 9Router Engine</span>
+            <span>•</span>
+            <span>Static Export Zero-Defect</span>
+            <span>•</span>
+            <span>The Decagon Milestone</span>
+          </div>
+        </div>
       </footer>
 
-      {/* Embedded AI Modal */}
-      <AICopilotModal
-        isOpen={isCopilotOpen}
-        onClose={() => setIsCopilotOpen(false)}
-      />
+      {/* AI Copilot Modal */}
+      <AICopilotModal isOpen={isCopilotOpen} onClose={() => setIsCopilotOpen(false)} />
     </div>
   );
 }

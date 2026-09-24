@@ -10,7 +10,7 @@ export interface TitanProject {
   statsMetric: string;
   badgeColor: string;
   accentGradient: string;
-  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart";
+  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart" | "shield";
   status?: "OPERATIONAL" | "ACTIVE" | "SYNTHESIZING";
 }
 
@@ -40,9 +40,16 @@ export interface SystemHealthProbe {
   id: string;
   name: string;
   endpoint: string;
-  status: "ONLINE" | "CHECKING" | "MAINTENANCE";
+  status: "ONLINE" | "DEGRADED" | "STANDBY";
   latencyMs: number;
   uptimePercent: number;
   lastChecked: string;
   routesCount: number;
+}
+
+export interface StreamingTelemetry {
+  tokensPerSec: number;
+  timeToFirstTokenMs: number;
+  activeChunkCount: number;
+  modelIdentifier: string;
 }
