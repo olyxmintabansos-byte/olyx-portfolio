@@ -10,7 +10,8 @@ export interface TitanProject {
   statsMetric: string;
   badgeColor: string;
   accentGradient: string;
-  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet";
+  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart";
+  status?: "OPERATIONAL" | "ACTIVE" | "SYNTHESIZING";
 }
 
 export interface AgentStep {
@@ -33,4 +34,15 @@ export interface ChatMessage {
     totalTokens: number;
     latencyMs: number;
   };
+}
+
+export interface SystemHealthProbe {
+  id: string;
+  name: string;
+  endpoint: string;
+  status: "ONLINE" | "CHECKING" | "MAINTENANCE";
+  latencyMs: number;
+  uptimePercent: number;
+  lastChecked: string;
+  routesCount: number;
 }
