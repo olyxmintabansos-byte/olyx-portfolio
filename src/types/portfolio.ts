@@ -10,7 +10,7 @@ export interface TitanProject {
   statsMetric: string;
   badgeColor: string;
   accentGradient: string;
-  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart" | "shield";
+  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart" | "shield" | "anchor";
   status?: "OPERATIONAL" | "ACTIVE" | "SYNTHESIZING";
 }
 

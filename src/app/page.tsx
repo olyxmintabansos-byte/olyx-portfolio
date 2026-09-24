@@ -23,11 +23,27 @@ import {
   ArrowUpRight,
   Radio,
   HeartPulse,
+  Anchor,
 } from "lucide-react";
 import { AICopilotModal } from "@/components/AICopilotModal";
 import { TitanProject } from "@/types/portfolio";
 
 const TITAN_PROJECTS: TitanProject[] = [
+  {
+    id: "logichain-os",
+    name: "LogiChain OS",
+    category: "Maritime Freight & Port OS (Titan 11)",
+    tagline: "AIS Sea Lanes Radar, Container Yard & INSW Customs",
+    description: "Sistem operasi maritim dan terminal peti kemas dengan HTML5 Canvas 60 FPS AIS radar, koordinat stacking bay-row-tier gantry crane, kalkulator tarif kepabeanan HS Code INSW & cetak B/L A4, serta telemetri IoT cold chain reefer.",
+    techStack: ["Next.js 16", "Canvas 60 FPS", "Bay Matrix", "INSW Customs"],
+    liveUrl: "https://olyxmintabansos-byte.github.io/logichain-os/",
+    githubUrl: "https://github.com/olyxmintabansos-byte/logichain-os",
+    statsMetric: "Undecagon Titan • Live",
+    badgeColor: "bg-sky-500/10 text-sky-400 border-sky-500/30",
+    accentGradient: "from-sky-500/20 via-blue-600/10 to-transparent",
+    iconName: "anchor",
+    status: "OPERATIONAL",
+  },
   {
     id: "aegissec-os",
     name: "AegisSec OS",
@@ -83,8 +99,8 @@ const TITAN_PROJECTS: TitanProject[] = [
     liveUrl: "https://olyxmintabansos-byte.github.io/nexus-shiftops/",
     githubUrl: "https://github.com/olyxmintabansos-byte/nexus-shiftops",
     statsMetric: "6 Rute • 100% Live",
-    badgeColor: "bg-sky-500/10 text-sky-400 border-sky-500/30",
-    accentGradient: "from-sky-500/20 via-blue-600/10 to-transparent",
+    badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+    accentGradient: "from-blue-500/20 via-indigo-600/10 to-transparent",
     iconName: "layers",
     status: "OPERATIONAL",
   },
@@ -170,6 +186,8 @@ export default function PortfolioHubPage() {
 
   const getProjectIcon = (name: TitanProject["iconName"]) => {
     switch (name) {
+      case "anchor":
+        return <Anchor className="w-6 h-6 text-sky-400" />;
       case "shield":
         return <ShieldCheck className="w-6 h-6 text-cyan-400" />;
       case "heart":
@@ -177,7 +195,7 @@ export default function PortfolioHubPage() {
       case "cpu":
         return <Cpu className="w-6 h-6 text-purple-400" />;
       case "layers":
-        return <Layers className="w-6 h-6 text-sky-400" />;
+        return <Layers className="w-6 h-6 text-blue-400" />;
       case "graduation":
         return <GraduationCap className="w-6 h-6 text-indigo-400" />;
       case "trending":
@@ -204,10 +222,10 @@ export default function PortfolioHubPage() {
               <div className="flex items-center gap-2">
                 <span className="font-black text-white text-base tracking-wider">APEX TITANS HUB</span>
                 <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold">
-                  THE DECAGON MILESTONE
+                  THE UNDECAGON MILESTONE
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400">10 Autonomous Enterprise Systems Ecosystem</p>
+              <p className="text-[10px] text-slate-400">11 Autonomous Enterprise Systems Ecosystem</p>
             </div>
           </div>
 
@@ -241,27 +259,26 @@ export default function PortfolioHubPage() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none mb-6">
-            The 10 Enterprise Titans <br />
-            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
-              Decagon Milestone (100M+ Tokens)
+            The 11 Enterprise Titans <br />
+            <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
+              Undecagon Milestone (100M+ Tokens)
             </span>
           </h1>
 
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-8">
-            Sepuluh mahakarya perangkat lunak tingkat korporasi skala penuh yang diarsiteki dengan standar industri:
-            Cyber Defense SIEM, Hospital ERP, Multi-Agent Orchestrator, Workforce Management, CBT LMS, Pasar Modal, Smart Retail POS, ATS Resume, dan SME Financials.
+            Sebelas mahakarya perangkat lunak tingkat korporasi skala penuh: Maritime Freight, Cyber Defense SIEM, Hospital ERP, Multi-Agent Orchestrator, Workforce Management, CBT LMS, Pasar Modal, Smart Retail POS, ATS Resume, dan SME Financials.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
               <Activity className="w-4 h-4 text-emerald-400" />
               <span className="text-slate-400">Total Status:</span>
-              <span className="text-white font-bold">10 / 10 Production Live</span>
+              <span className="text-white font-bold">11 / 11 Production Live</span>
             </div>
             <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
               <Globe className="w-4 h-4 text-blue-400" />
               <span className="text-slate-400">Rute Prerendered:</span>
-              <span className="text-white font-bold">42+ Halaman Statis</span>
+              <span className="text-white font-bold">46+ Halaman Statis</span>
             </div>
             <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2">
               <Zap className="w-4 h-4 text-amber-400" />
@@ -279,7 +296,7 @@ export default function PortfolioHubPage() {
             <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
               <span>Bento Grid Titans Ecosystem</span>
               <span className="text-xs px-2 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                10 TITANS
+                11 TITANS
               </span>
             </h2>
             <p className="text-xs text-slate-400 mt-1">Eksplorasi portofolio live, arsitektur sistem, dan source code repositori.</p>
@@ -375,7 +392,7 @@ export default function PortfolioHubPage() {
             <span>•</span>
             <span>Static Export Zero-Defect</span>
             <span>•</span>
-            <span>The Decagon Milestone</span>
+            <span>The Undecagon Milestone</span>
           </div>
         </div>
       </footer>

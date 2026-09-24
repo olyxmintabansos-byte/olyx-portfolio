@@ -18,6 +18,16 @@ import { SystemHealthProbe } from "@/types/portfolio";
 
 const SYSTEM_PROBES: SystemHealthProbe[] = [
   {
+    id: "logichain-os",
+    name: "LogiChain OS (Maritime Freight & Port)",
+    endpoint: "https://olyxmintabansos-byte.github.io/logichain-os/",
+    status: "ONLINE",
+    latencyMs: 26,
+    uptimePercent: 99.99,
+    lastChecked: "Baru saja",
+    routesCount: 4,
+  },
+  {
     id: "aegissec-os",
     name: "AegisSec OS (Cyber Defense & SOC)",
     endpoint: "https://olyxmintabansos-byte.github.io/aegissec-os/",
@@ -25,7 +35,7 @@ const SYSTEM_PROBES: SystemHealthProbe[] = [
     latencyMs: 24,
     uptimePercent: 99.99,
     lastChecked: "Baru saja",
-    routesCount: 3,
+    routesCount: 4,
   },
   {
     id: "medicore-os",
@@ -136,17 +146,17 @@ export default function ObservatoryPage() {
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-                  DECAGON MILESTONE
+                  UNDECAGON MILESTONE
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400">9 Enterprise Titans Telemetry & Health Probe Network</p>
+              <p className="text-[10px] text-slate-400">11 Enterprise Titans Telemetry &amp; Health Probe Network</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 text-xs">
             <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>SLA 99.97% MET</span>
+              <span>SLA 99.98% MET</span>
             </div>
           </div>
         </div>
