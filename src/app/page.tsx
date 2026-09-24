@@ -13,7 +13,7 @@ import {
   Activity,
   Zap,
   Globe,
-  Github,
+  GitBranch,
   Flame,
   ShieldCheck,
   Terminal,
@@ -353,7 +353,7 @@ export default function PortfolioHubPage() {
                     rel="noopener noreferrer"
                     className="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors"
                   >
-                    <Github className="w-3.5 h-3.5" />
+                    <GitBranch className="w-3.5 h-3.5" />
                     <span>GitHub</span>
                   </a>
                 </div>
