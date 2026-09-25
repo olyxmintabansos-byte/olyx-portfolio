@@ -11,12 +11,51 @@ import {
   ShieldCheck,
   Activity,
   Zap,
-  Flame,
   Cpu,
 } from "lucide-react";
 import { SystemHealthProbe } from "@/types/portfolio";
 
 const SYSTEM_PROBES: SystemHealthProbe[] = [
+  {
+    id: "insursure-os",
+    name: "InsurSure OS (InsurTech & Actuary)",
+    endpoint: "https://olyxmintabansos-byte.github.io/insursure-os/",
+    status: "ONLINE",
+    latencyMs: 22,
+    uptimePercent: 99.99,
+    lastChecked: "Baru saja",
+    routesCount: 4,
+  },
+  {
+    id: "lexjurist-os",
+    name: "LexJurist OS (Legal & Court Docket)",
+    endpoint: "https://olyxmintabansos-byte.github.io/lexjurist-os/",
+    status: "ONLINE",
+    latencyMs: 25,
+    uptimePercent: 99.99,
+    lastChecked: "Baru saja",
+    routesCount: 4,
+  },
+  {
+    id: "venturevault-os",
+    name: "VentureVault OS (Cap Table & PE)",
+    endpoint: "https://olyxmintabansos-byte.github.io/venturevault-os/",
+    status: "ONLINE",
+    latencyMs: 27,
+    uptimePercent: 99.99,
+    lastChecked: "Baru saja",
+    routesCount: 4,
+  },
+  {
+    id: "forgecommerce-os",
+    name: "ForgeCommerce OS (B2B Wholesale RFQ)",
+    endpoint: "https://olyxmintabansos-byte.github.io/forgecommerce-os/",
+    status: "ONLINE",
+    latencyMs: 29,
+    uptimePercent: 99.98,
+    lastChecked: "Baru saja",
+    routesCount: 4,
+  },
   {
     id: "logichain-os",
     name: "LogiChain OS (Maritime Freight & Port)",
@@ -146,10 +185,10 @@ export default function ObservatoryPage() {
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
-                  UNDECAGON MILESTONE
+                  QUINDECAGON MILESTONE (15/50)
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400">11 Enterprise Titans Telemetry &amp; Health Probe Network</p>
+              <p className="text-[10px] text-slate-400">15 Enterprise Titans Telemetry &amp; Health Probe Network</p>
             </div>
           </div>
 
@@ -263,10 +302,19 @@ export default function ObservatoryPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-[#04060f] py-6 text-center text-xs text-slate-500">
-        <div>
-          Apex Global Systems Observatory • Organization:{" "}
-          <code className="text-cyan-400 font-mono">olyxmintabansos-byte</code>
+      <footer className="border-t border-slate-800/80 bg-[#04060f] py-8 text-center text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            © 2026 <span className="text-slate-300 font-bold">Apex Cyber Systems</span> • Organization:{" "}
+            <code className="text-cyan-400 font-mono">olyxmintabansos-byte</code>
+          </div>
+          <div className="flex items-center gap-4 text-slate-400">
+            <span>Powered by 9Router Engine</span>
+            <span>•</span>
+            <span>Static Export Zero-Defect</span>
+            <span>•</span>
+            <span>Quindecagon Milestone (15/50)</span>
+          </div>
         </div>
       </footer>
     </div>

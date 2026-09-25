@@ -10,7 +10,22 @@ export interface TitanProject {
   statsMetric: string;
   badgeColor: string;
   accentGradient: string;
-  iconName: "layers" | "graduation" | "trending" | "shopping" | "file" | "wallet" | "cpu" | "heart" | "shield" | "anchor";
+  iconName:
+    | "layers"
+    | "graduation"
+    | "trending"
+    | "shopping"
+    | "file"
+    | "wallet"
+    | "cpu"
+    | "heart"
+    | "shield"
+    | "anchor"
+    | "cart"
+    | "coins"
+    | "scale"
+    | "shield-alert"
+    | "zap";
   status?: "OPERATIONAL" | "ACTIVE" | "SYNTHESIZING";
 }
 
@@ -31,8 +46,8 @@ export interface ChatMessage {
   tokenStats?: {
     promptTokens: number;
     completionTokens: number;
-    totalTokens: number;
     latencyMs: number;
+    totalTokens: number;
   };
 }
 
